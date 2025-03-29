@@ -1,95 +1,94 @@
 <template>
-    <header class="header">
-      <div class="header__logo">
-        <NuxtLink to="/">
-          <NuxtImg :src="logo"/>
-        </NuxtLink>
-      </div>
-      <div class="header-actions">
-        <nav class="nav">
-          <ul class="nav__list">
-            <li v-for="nav in navigation" :key="nav.name" class="nav__item">
-              <NuxtLink :to="nav.href" class="nav__link">{{ nav.name }}</NuxtLink>
-            </li>
-          </ul>
-        </nav>
-        <div class="header__options">
-          <div class="options__lang">
-            <img :src="image" alt="lang" >
-          </div>
-          <div class="options__button">
-            <div class="button button-large">Let’s work</div>
-          </div>
+  <header class="header">
+    <div class="header__logo">
+      <NuxtLink to="/">
+        <NuxtImg :src="logo" />
+      </NuxtLink>
+    </div>
+    <div class="header-actions">
+      <nav class="nav">
+        <ul class="nav__list">
+          <li v-for="nav in navigation" :key="nav.name" class="nav__item">
+            <NuxtLink :to="nav.href" class="nav__link">{{ nav.name }}</NuxtLink>
+          </li>
+        </ul>
+      </nav>
+      <div class="header__options">
+        <div class="options__lang">
+          <img :src="image" alt="lang" >
+        </div>
+        <div class="options__button">
+          <div class="button button-large">Let’s work</div>
         </div>
       </div>
-    </header>
-  </template>
-  
-  <script setup lang="ts">
-  const image = "/images/uk.svg";
-  const logo = "/images/logo.svg";
-  
-  const navigation = ref([
-    {
-      name: "Works",
-      href: "/",
-    },
-    {
-      name: "About",
-      href: "/",
-    },
-  ]);
-  </script>
-  
-  <style lang="scss">
-  header.header {
-    max-width: 1360px;
-    margin: 0 auto;
-  
+    </div>
+  </header>
+</template>
+
+<script setup lang="ts">
+const image = "/images/uk.svg";
+const logo = "/images/logo.svg";
+
+const navigation = ref([
+  {
+    name: "Works",
+    href: "/",
+  },
+  {
+    name: "About",
+    href: "/",
+  },
+]);
+</script>
+
+<style lang="scss" scoped>
+header.header {
+  max-width: 1360px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 40px;
+
+  .header__logo {
+    width: 84;
+    height: 25;
+    top: 47px;
+    left: 40px;
+    color: $base-black;
+  }
+
+  .header-actions {
     display: flex;
-    justify-content: space-between;
+    gap: 91px;
     align-items: center;
-    padding: 35px 40px;
-  
-    .header__logo {
-      width: 84;
-      height: 25;
-      top: 47px;
-      left: 40px;
-      color: $base-black;
-    }
-  
-    .header-actions {
-      display: flex;
-      gap: 91px;
-      align-items: center;
-  
-      .nav {
-        .nav__list {
-          display: flex;
-          gap: 58px;
-          margin: 0;
-          padding: 0;
-        }
-      }
-  
-      .header__options {
+
+    .nav {
+      .nav__list {
         display: flex;
-        gap: 16px;
-  
-        .options__lang {
-          cursor: pointer;
-          width: 52px;
-          height: 52px;
-          border-radius: 50%;
-          border: 2px solid $light-gray;
-  
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
+        gap: 58px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .header__options {
+      display: flex;
+      gap: 16px;
+
+      .options__lang {
+        cursor: pointer;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: 2px solid $light-gray;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
-  </style>
-  
+}
+</style>
