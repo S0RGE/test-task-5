@@ -14,13 +14,16 @@ export const usePostListStore = defineStore('usePostList', () => {
         }
 
         try {
-            isLoading.value = true
-            posts.value = await fetchPostList()
+            isLoading.value = true;
+            const data = await fetchPostList();
+            posts.value = data;
+            return data;
         } catch (e) {
-            error.value = e as Error
-            posts.value = []
+            error.value = e as Error;
+            posts.value = [];
+            throw e;
         } finally {
-            isLoading.value = false
+            isLoading.value = false;
         }
     }
 
