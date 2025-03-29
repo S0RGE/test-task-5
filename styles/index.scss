@@ -1,0 +1,54 @@
+@use "./colors" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: $base-black;
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+
+h1 {
+  font-weight: 400;
+  font-size: 84px;
+  line-height: 100%;
+}
+
+.container {
+  max-width: 1217px;
+  margin: 0 auto;
+}
+
+.button {
+  background-color: $base-black;
+  color: $base-white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: $light-black;
+}
+
+.button.button-large {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 100%;
+  padding: 16px 32px;
+  border-radius: 99px;
+}
