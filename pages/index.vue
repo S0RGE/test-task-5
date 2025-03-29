@@ -20,10 +20,14 @@
 </template>
 
 <script setup lang="ts">
-import { getPostList } from "~/api";
+import { storeToRefs } from "#imports";
+import { usePostListStore } from "~/stores/PostList";
 import { usePagination } from "~/composable/usePagination";
+const listStore = usePostListStore();
+const { getPostList } = listStore;
+const { posts } = storeToRefs(listStore);
 
-const { data: posts } = await useAsyncData(async () => await getPostList());
+await useAsyncData(async () => await getPostList());
 
 const paginatedPosts = computed(() =>
   posts.value?.slice(

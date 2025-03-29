@@ -28,12 +28,12 @@
 </template>
 
 <script setup lang="ts">
-import { getPostById } from "~/api";
+import { fetchPostById } from "~/api";
 
 const route = useRoute();
 
 const { data: post } = await useAsyncData(
-  async () => await getPostById(route.params.id as string)
+  async () => await fetchPostById(route.params.id as string)
 );
 
 const baseImage = ref("");
