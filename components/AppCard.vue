@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card__link">
-      <NuxtLink to="/">Read more</NuxtLink>
+      <NuxtLink :to="`post/${id}`">Read more</NuxtLink>
     </div>
     <div class="card__content">
       <div class="card__img">
@@ -15,8 +15,18 @@
           :custom="true"
           @error="handleError"
         >
-          <img v-if="isLoaded" v-bind="imgAttrs" :src="src" class="card__img-element">
-          <img v-else src="/images/photo.png" alt="placeholder" class="card__img-element">
+          <img
+            v-if="isLoaded"
+            v-bind="imgAttrs"
+            :src="src"
+            class="card__img-element"
+          >
+          <img
+            v-else
+            src="/images/photo.png"
+            alt="placeholder"
+            class="card__img-element"
+          >
         </NuxtImg>
       </div>
       <div class="card__description">
@@ -80,6 +90,7 @@ const handleError = () => {
     }
 
     .card__description {
+      margin-top: 34px;
       display: -webkit-box;
       -webkit-box-orient: vertical;
       -webkit-line-clamp: 3;

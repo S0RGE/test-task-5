@@ -102,7 +102,7 @@ footer.footer {
         margin-top: 56px;
         text-decoration: underline;
         text-decoration-thickness: 1px;
-        text-underline-offset: 18px;
+        text-underline-offset: 12px;
         text-decoration-color: $base-black;
       }
     }
@@ -127,6 +127,10 @@ footer.footer {
         gap: 36px;
         align-items: center;
         justify-content: center;
+
+        .contact-info__main{
+          width: 100%;
+        }
 
         .contact-info__locations {
           display: flex;

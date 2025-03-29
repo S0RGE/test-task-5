@@ -52,11 +52,10 @@ header.header {
   padding: 35px 40px;
 
   .header__logo {
-    width: 84;
-    height: 25;
-    top: 47px;
-    left: 40px;
-    color: $base-black;
+    img {
+        width: 84px;
+        height: 25px;
+    }
   }
 
   .header-actions {

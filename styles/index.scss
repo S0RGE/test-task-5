@@ -1,10 +1,17 @@
 @use "./colors" as *;
 
+@font-face {
+  font-family: 'TTCommons';
+  src: url('/fonts/TTCommons-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "TTCommons", Tahoma, Geneva, Verdana, sans-serif;
   color: $base-black;
 }
 
