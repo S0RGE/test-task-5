@@ -6,15 +6,12 @@
     <div class="post-item__image">
       <NuxtImg
         v-slot="{ src, isLoaded, imgAttrs }"
-        :src="postImage"
+        :src="post?.image"
         alt="post-image"
         loading="lazy"
-        :placeholder="[500, 300]"
         :custom="true"
-        @error="handleError"
       >
         <img v-if="isLoaded" v-bind="imgAttrs" :src="src" >
-
         <img v-else src="/images/photo.png" alt="placeholder" >
       </NuxtImg>
     </div>
@@ -46,14 +43,6 @@ const { data: post, error } = await useAsyncData(
 if(error.value || !post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found' });
 }
-
-const baseImage = ref("");
-
-const postImage = computed(() => baseImage.value || post.value?.image);
-
-const handleError = () => {
-  baseImage.value = "/images/photo.png";
-};
 </script>
 
 <style lang="scss">

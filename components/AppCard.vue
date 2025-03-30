@@ -10,13 +10,10 @@
       <div class="card__img">
         <NuxtImg
           v-slot="{ src, isLoaded, imgAttrs }"
-          :src="cardImage"
+          :src="image"
           alt="card-image"
-          width="640"
-          height="480"
           loading="lazy"
           :custom="true"
-          @error="handleError"
         >
           <img
             v-if="isLoaded"
@@ -26,7 +23,7 @@
           >
           <img
             v-else
-            src="/images/photo.png"
+            src="/images/gray-background.jpg"
             alt="placeholder"
             class="card__img-element"
           >
@@ -46,15 +43,7 @@ export interface ICard {
   id: string;
 }
 
-const { image } = defineProps<ICard>();
-
-const baseImage = ref("");
-
-const cardImage = computed(() => baseImage.value || image);
-
-const handleError = () => {
-  baseImage.value = "/images/photo.png";
-};
+defineProps<ICard>();
 </script>
 
 <style lang="scss" scoped>
