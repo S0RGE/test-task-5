@@ -5,8 +5,6 @@ import { fetchPostList } from "~/api";
 
 export const usePostListStore = defineStore('usePostList', () => {
     const posts = ref<Post[]>([])
-    const isLoading = ref(false)
-    const error = ref<Error | null>(null)
 
     const getPostList = async () => {
         if (posts.value.length) {
@@ -14,23 +12,27 @@ export const usePostListStore = defineStore('usePostList', () => {
         }
 
         try {
-            isLoading.value = true;
-            const data = await fetchPostList();
+            const response: Response = await fetchPostList();
+            const data: Post[] = await response.json();
+            if (!data || !Array.isArray(data)) {
+                throw createError({
+                    statusCode: 404,
+                    statusMessage: 'Page not found'
+                });
+            }
             posts.value = data;
             return data;
-        } catch (e) {
-            error.value = e as Error;
-            posts.value = [];
-            throw e;
-        } finally {
-            isLoading.value = false;
+        } catch (e: unknown) {
+            console.log('Error',e);
+            throw createError({
+                statusCode: 404,
+                statusMessage: 'Page not found'
+            })
         }
     }
 
     return {
         posts,
-        isLoading,
-        error,
         getPostList
     }
 })

@@ -27,7 +27,14 @@ const listStore = usePostListStore();
 const { getPostList } = listStore;
 const { posts } = storeToRefs(listStore);
 
-await useAsyncData(async () => await getPostList());
+const { error } = await useAsyncData(() => getPostList());
+
+if (error.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Page not found",
+  });
+}
 
 const paginatedPosts = computed(() =>
   posts.value?.slice(

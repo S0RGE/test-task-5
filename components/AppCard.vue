@@ -1,7 +1,10 @@
 <template>
   <div class="card">
     <div class="card__link">
-      <NuxtLink :to="`post/${id}`">Read more</NuxtLink>
+      <NuxtLink
+        :to="`/post/${id}`"
+        >Read more</NuxtLink
+      >
     </div>
     <div class="card__content">
       <div class="card__img">

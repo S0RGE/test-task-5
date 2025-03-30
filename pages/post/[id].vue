@@ -28,17 +28,28 @@
 </template>
 
 <script setup lang="ts">
-import { fetchPostById } from "~/api";
-
+import { usePostStore } from "~/stores/Post";
+const { getPostById } = usePostStore();
 const route = useRoute();
 
-const { data: post } = await useAsyncData(
-  async () => await fetchPostById(route.params.id as string)
+const postId = route.params.id as string;
+
+if(!postId) {
+  throw createError({ statusCode: 404, statusMessage: 'Post not found' });
+}
+
+const { data: post, error } = await useAsyncData(
+  'post',
+  () => getPostById(postId)
 );
+
+if(error.value || !post.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Post not found' });
+}
 
 const baseImage = ref("");
 
-const postImage = computed(() => baseImage.value || post.value.image);
+const postImage = computed(() => baseImage.value || post.value?.image);
 
 const handleError = () => {
   baseImage.value = "/images/photo.png";
