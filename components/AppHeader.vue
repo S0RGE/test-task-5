@@ -70,6 +70,12 @@ header.header {
         margin: 0;
         padding: 0;
       }
+
+      @media (max-width: 642px) {
+        .nav__list{
+          gap: 32px;
+        }
+      }
     }
 
     .header__options {
@@ -88,6 +94,22 @@ header.header {
         justify-content: center;
       }
     }
+  }
+
+  @media (max-width: 642px) {
+    .header-actions{
+      width: 100%;
+      justify-content: space-between;
+      gap: unset;
+    }
+    
+  }
+}
+
+@media (max-width: 642px) {
+  header.header {
+    flex-direction: column;
+    gap: 40px;
   }
 }
 </style>

@@ -94,6 +94,12 @@ footer.footer {
         letter-spacing: 1%;
       }
 
+      @media (max-width: 642px) {
+        .title__upper {
+          text-align: center;
+        }
+      }
+
       .title__main {
         font-weight: 400;
         font-size: 112px;
@@ -104,6 +110,19 @@ footer.footer {
         text-decoration-thickness: 1px;
         text-underline-offset: 12px;
         text-decoration-color: $base-black;
+      }
+
+      @media (max-width: 642px) {
+        .title__main {
+          text-align: center;
+          margin-top: 34px;
+        }
+      }
+    }
+
+    @media (max-width: 642px) {
+      .content__title {
+        display: none;
       }
     }
 
@@ -128,7 +147,7 @@ footer.footer {
         align-items: center;
         justify-content: center;
 
-        .contact-info__main{
+        .contact-info__main {
           width: 100%;
         }
 
@@ -136,6 +155,23 @@ footer.footer {
           display: flex;
           flex-direction: column;
           gap: 36px;
+        }
+      }
+
+      @media (max-width: 642px) {
+        .contact-info__container {
+          max-width: none;
+          .contact-info__main {
+            text-align: center;
+          }
+
+          .contact-info__locations{
+            flex-direction: row;
+
+            .location{
+              text-align: center;
+            }
+          }
         }
       }
     }
@@ -147,6 +183,13 @@ footer.footer {
     .location__icon {
       margin-top: 8px;
       cursor: pointer;
+    }
+  }
+
+  @media (max-width: 642px) {
+    .footer__content {
+      flex-direction: column;
+      align-items: center;
     }
   }
 
@@ -172,6 +215,24 @@ footer.footer {
           text-decoration-color: $base-black;
         }
       }
+
+      @media (max-width: 642px) {
+        .social__inner {
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+        }
+      }
+    }
+
+    @media (max-width: 642px) {
+      .footer__social {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
     }
 
     .big-black-button {
@@ -195,6 +256,29 @@ footer.footer {
       line-height: 100%;
       cursor: pointer;
     }
+
+    @media (max-width: 1024px) {
+      .big-black-button {
+        left: calc(50% - 85px);
+        width: 170px;
+        height: 85px;
+        padding-bottom: 25px;
+        border-radius: 85px 85px 0 0;
+      }
+    }
+
+    @media (max-width: 805px) {
+      .big-black-button {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 642px) {
+  footer.footer {
+    padding-top: 56px;
+    height: fit-content;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="pagination">
-    <div v-show="hasPrev" class="button-pagination button-prev" @click="prev">
+  <div v-if="!isMobile" class="pagination">
+    <div v-show="hasPrev" class="button-pagination button-prev" @click="prev(false)">
       <svg
         width="8"
         height="13"
@@ -26,8 +26,7 @@
         {{ page }}
       </div>
     </span>
-
-    <div v-show="hasNext" class="button-pagination button-next" @click="next">
+    <div v-show="hasNext" class="button-pagination button-next" @click="next(false)">
       <svg
         width="8"
         height="13"
@@ -45,9 +44,17 @@
       </svg>
     </div>
   </div>
+  <div v-else class="pagination">
+    <div v-if="hasNext" class="button" @click="prev(true)">Prev</div>
+    <div v-if="hasNext" class="button" @click="next(true)">Next</div>
+  </div>
 </template>
 
 <script setup lang="ts">
+import { useAdaptive } from "~/composable/useAdaptive";
+
+const { isMobile } = useAdaptive();
+
 export interface IProps {
   totalPages: number;
   currentPage: number;
@@ -62,16 +69,29 @@ const emit = defineEmits({
 const hasNext = computed(() => props.currentPage < props.totalPages);
 const hasPrev = computed(() => props.currentPage > 1);
 
-const prev = () => {
+const prev = (isGoUp?: boolean) => {
   if (hasPrev.value) {
     emit("goToPage", props.currentPage - 1);
   }
+  if (isGoUp) {
+    scrollToTop();
+  }
 };
 
-const next = () => {
+const next = (isGoUp?: boolean) => {
   if (hasNext.value) {
     emit("goToPage", props.currentPage + 1);
   }
+  if (isGoUp) {
+    scrollToTop();
+  }
+};
+
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
 };
 
 const onGoToPage = (page: number) => {

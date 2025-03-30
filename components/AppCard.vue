@@ -1,10 +1,7 @@
 <template>
   <div class="card">
     <div class="card__link">
-      <NuxtLink
-        :to="`/post/${id}`"
-        >Read more</NuxtLink
-      >
+      <NuxtLink :to="`/post/${id}`">Read more</NuxtLink>
     </div>
     <div class="card__content">
       <div class="card__img">
@@ -52,10 +49,6 @@ defineProps<ICard>();
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  &:hover .card__content {
-    transform: translateY(-36px);
-  }
 
   .card__content {
     transition: transform 0.9s ease;
@@ -105,9 +98,26 @@ defineProps<ICard>();
     color: $base-violet;
   }
 
-  &:hover .card__link {
-    opacity: 1;
-    visibility: visible;
+  @media (min-width: 760px) {
+    &:hover .card__content {
+      transform: translateY(-36px);
+    }
+
+    &:hover .card__link {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .card__content {
+      transform: translateY(-36px);
+    }
+
+    .card__link {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }
 </style>

@@ -23,6 +23,7 @@
 import { storeToRefs } from "#imports";
 import { usePostListStore } from "~/stores/PostList";
 import { usePagination } from "~/composable/usePagination";
+
 const listStore = usePostListStore();
 const { getPostList } = listStore;
 const { posts } = storeToRefs(listStore);
@@ -66,8 +67,9 @@ main {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 760px) {
       grid-template-columns: 1fr;
+      row-gap: 66px;
     }
   }
 

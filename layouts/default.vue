@@ -9,7 +9,7 @@
 </template>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 header.header {
   margin-bottom: 120px;
 }
